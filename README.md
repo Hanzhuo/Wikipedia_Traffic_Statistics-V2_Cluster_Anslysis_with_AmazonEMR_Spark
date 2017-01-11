@@ -33,7 +33,7 @@ Third, go to your Amazon EMR services and click **create cluster** according to 
 
 * You can see [here](https://aws.amazon.com/ec2/instance-types/?nc1=h_ls) for instance hardware type choice.
 * As for this project, I created the 5 instances as below:
-![instances](/Users/Hanzhuo/Desktop/Github/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/ImageDocument/5instances.jpeg)
+![instances](https://github.com/Hanzhuo/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/blob/master/ImageDocument/5instances.jpeg)
 
 Forth, We can create a new file folder in our S3 bucket for data storage (or you can create the file folder with AWS cli later).
 
@@ -46,7 +46,7 @@ Forth, We can create a new file folder in our S3 bucket for data storage (or you
 As I said above, this project used 1TB **Wikipedia Traffic Statistics V2** AWS public dataset [here](https://aws.amazon.com/datasets/wikipedia-traffic-statistics-v2/). You can download same data from links in Wikipedia Traffic Statistics V2 website to your local machine. It also is available in AWS public datasets that can be accessed through AWS EBS (see detailed document about how to access public datasets [here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-public-data-sets.html)).
 
 * Go to your EC2 services console, and click **Snapshots** under **ELASTIC BLOCK STROE**. Search **US Snapshot ID (Linux/Unix): snap-0c155c67** of wikipedia-traffic-statistics-v2 in **Public Snapshot** and **N.Virginia** (see image below). 
-![Snapshots](/Users/Hanzhuo/Desktop/Github/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/ImageDocument/snapshots.png)
+![Snapshots](https://github.com/Hanzhuo/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/blob/master/ImageDocument/snapshots.png)
 * Click **Actions** and choose **Create Volume**. Then we can get a volume in **Volumes** under **ELASTIC BLOCK STROE**. 
 
 By now, we have copied the data from public snapshots to our own volume. 
@@ -69,17 +69,17 @@ I used AWS cli to upload data to S3 bucket. See official document [here](https:/
 * Enter `aws s3 mb s3://yourBucketDocument` to create a new file folder in S3 if you do not create file folder before. 
 * Upload the choosed data and files to S3 according to step3 b [here](https://aws.amazon.com/getting-started/tutorials/backup-to-s3-cli/?nc1=h_ls)
 AWS cli example is showed below:
-![AWS cli](/Users/Hanzhuo/Desktop/Github/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/ImageDocument/cop file to s3.png)
+![AWS cli](https://github.com/Hanzhuo/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/blob/master/ImageDocument/cop%20file%20to%20s3.png)
 
 By now, we have prepared the data for data analysis.
 
 ##Use Zeppelin Notebook and PySpark to conduct 
 
 It is super easy to use Zeppelin Notebook. Just go to your EMR Management Console and click Zeppelin. Make sure that your IP address is in corresponding security group in your AWS.
-![Click Zeppelin](/Users/Hanzhuo/Desktop/Github/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/ImageDocument/useZeppelin.jpeg)
+![Click Zeppelin](https://github.com/Hanzhuo/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/blob/master/ImageDocument/useZeppelin.jpeg)
 
 The Zepplein notebook looks like:
-![Zeppelin example](/Users/Hanzhuo/Desktop/Github/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/ImageDocument/zeppelin.png)
+![Zeppelin example](https://github.com/Hanzhuo/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/blob/master/ImageDocument/zeppelin.png)
 Attention: In Zepplin Notebook, the first line `%pyspark` means that you want to use pyspark in this textbox. If you want to use Python just type `%python` at first line, then you can use Python in the textbox.
 
 ###Explaination of Python and Pyspark scripts in Zepplin Notebook
@@ -91,8 +91,8 @@ Then we can run Pyspark code to process data and conduct cluster analysis. The r
 
 ###Some results
 Here is sample data after pre-processing
-![sample_processed_data](/Users/Hanzhuo/Desktop/Github/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/ImageDocument/sample_processed_data.png)
+![sample_processed_data](https://github.com/Hanzhuo/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/blob/master/ImageDocument/sample_processed_data.png)
 
 Here is general data descriptions for 9 million selected highe view pages
-![sample_processed_data](/Users/Hanzhuo/Desktop/Github/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/ImageDocument/9mhighviewsdatadesc.png)
+![sample_processed_data](https://github.com/Hanzhuo/Wikipedia_Traffic_Statistics-V2_Cluster_Anslysis_with_AmazonEMR_Spark/blob/master/ImageDocument/9mhighviewsdatadesc.png)
 
